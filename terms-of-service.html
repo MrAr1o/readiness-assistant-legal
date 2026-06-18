@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service - Readiness Assistant</title>
+  <meta name="description" content="Terms for using Readiness Assistant." />
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #172b4d;
+      --muted: #5e6c84;
+      --border: #dfe1e6;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --blue: #0c66e4;
+      --blue-dark: #0747a6;
+      --green: #216e4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f4f5f7;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 28px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0c66e4, #09326c);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand strong { display: block; font-size: 18px; line-height: 1.2; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    nav a {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 7px 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: var(--blue-dark);
+      background: #e9f2ff;
+      border-color: #b3d4ff;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 64px;
+    }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: 0; }
+    h1 { font-size: 34px; margin: 0 0 10px; }
+    h2 { font-size: 26px; margin: 34px 0 12px; }
+    h3 { font-size: 21px; margin: 28px 0 10px; }
+    h4, h5 { font-size: 18px; margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    a { color: var(--blue); }
+    code {
+      background: #f1f2f4;
+      border: 1px solid #dcdfe4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .92em;
+    }
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 34px 36px;
+    }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: #f0f6ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      color: #253858;
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    ul, ol { padding-left: 24px; }
+    li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-size: 13px; text-transform: uppercase; color: #42526e; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      main { padding: 22px 16px 44px; }
+      .hero, .content { padding: 22px 18px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">RA</div>
+        <div>
+          <strong>Readiness Assistant</strong>
+          <span>Legal, privacy and security information</span>
+        </div>
+      </div>
+      <nav><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms-of-service.html" aria-current="page">Terms of Service</a><a href="./security.html">Security Disclosure</a><a href="./security-faq.html">Security & Privacy FAQ</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SteikTech</p>
+      <h1>Terms of Service</h1>
+      <p>Terms for using Readiness Assistant.</p>
+    </section>
+    <article class="content">
+      <h2>Terms of Service — Readiness Assistant</h2>
+<p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik</p>
+<p><strong>Address:</strong> Severinstraße 61, 45127 Essen, Deutschland</p>
+<p><strong>Effective date:</strong> June 18, 2026</p>
+<p><strong>Last updated:</strong> June 2026</p>
+<p><strong>Version:</strong> 1.0</p>
+<div class="notice"><strong>Legal notice:</strong> This document is a prepared draft. It must be reviewed by a qualified legal professional before publication and before charging customers. It does not constitute legal advice.</div>
+<hr />
+<h3>1. Acceptance of Terms</h3>
+<p>By installing, accessing, or using Readiness Assistant (&quot;the App&quot;), you (&quot;Customer&quot;, &quot;you&quot;) agree to these Terms of Service (&quot;Terms&quot;) on behalf of yourself and the organisation you represent.</p>
+<p>If you do not agree to these Terms, do not install or use the App.</p>
+<p>These Terms govern the relationship between SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) and you. Your use of Atlassian Confluence Cloud and the Atlassian Marketplace is also governed by Atlassian&#39;s own terms and policies.</p>
+<hr />
+<h3>2. Description of the App</h3>
+<p>Readiness Assistant is a Confluence Cloud tool that helps teams prepare documentation for audits, certifications, and enterprise reviews by:</p>
+<ul>
+<li>scanning Confluence spaces to identify documentation gaps against compliance frameworks;</li>
+<li>detecting stale, ownerless, and poorly structured documentation;</li>
+<li>generating readiness scores, gap checklists, and remediation workflows;</li>
+<li>producing internal Readiness Audit Packs for review purposes.</li>
+</ul>
+<h4>Important limitations</h4>
+<p><strong>The App does not:</strong></p>
+<ul>
+<li>certify your organisation&#39;s compliance with any regulation, law, or standard;</li>
+<li>constitute legal, regulatory, audit, or compliance advice;</li>
+<li>replace qualified compliance professionals, auditors, or legal counsel;</li>
+<li>guarantee audit success, regulatory approval, or certification;</li>
+<li>provide any assurance that your organisation actually meets the requirements of any framework.</li>
+</ul>
+<p><strong>All readiness scores, gap analyses, and reports are generated by automated keyword-heuristic analysis.</strong> They reflect documentation *presence* — not documentation quality, accuracy, or sufficiency for any regulatory purpose. You remain solely responsible for your compliance obligations.</p>
+<hr />
+<h3>3. Atlassian Marketplace Relationship</h3>
+<p>This App is distributed through the Atlassian Marketplace. Your use is subject to:</p>
+<ul>
+<li>Atlassian&#39;s Marketplace Terms of Use;</li>
+<li>Atlassian&#39;s Privacy Policy;</li>
+<li>applicable Forge platform policies.</li>
+</ul>
+<p>We are an independent third-party developer. We are not Atlassian, and Atlassian is not responsible for the App or these Terms. Atlassian processes payments and handles certain licensing functions for Marketplace apps.</p>
+<hr />
+<h3>4. Eligibility</h3>
+<p>You must:</p>
+<ul>
+<li>have a valid Atlassian Confluence Cloud account;</li>
+<li>have administrative permissions to install Atlassian Marketplace apps on your organisation&#39;s Confluence site;</li>
+<li>be legally authorised to bind your organisation to these Terms.</li>
+</ul>
+<hr />
+<h3>5. Licence</h3>
+<p>Subject to these Terms and payment of applicable fees (if any), we grant you a limited, non-exclusive, non-transferable, revocable licence to use the App for your organisation&#39;s internal documentation management and audit preparation purposes during the subscription term.</p>
+<hr />
+<h3>6. App Permissions and Data Access</h3>
+<p>By installing the App, you authorise it to access the following data from your Confluence Cloud instance:</p>
+<div class="table-wrap"><table><thead><tr><th>Permission</th><th>Purpose</th></tr></thead><tbody><tr><td><code>read:page:confluence</code></td><td>Read page content and metadata to perform compliance and health scans</td></tr><tr><td><code>read:space:confluence</code></td><td>List spaces for scanning and filter configuration</td></tr><tr><td><code>read:confluence-user</code></td><td>Read page author information to identify ownerless pages</td></tr><tr><td><code>storage:app</code></td><td>Store scan findings, workflow records, and settings within Atlassian Forge Storage</td></tr></tbody></table></div>
+<p>The App does not request write access to Confluence. It cannot create, edit, or delete your Confluence content.</p>
+<p>By installing, you confirm that you have the authority to grant these permissions on behalf of your organisation.</p>
+<hr />
+<h3>7. Acceptable Use</h3>
+<p>You agree not to:</p>
+<ul>
+<li>use the App to process data for any third party without their knowledge and consent;</li>
+<li>attempt to reverse-engineer, decompile, disassemble, or extract source code from the App;</li>
+<li>resell, sublicence, or otherwise provide the App to third parties as a standalone commercial service;</li>
+<li>use the App in any manner that violates applicable laws or regulations;</li>
+<li>attempt to access data belonging to other Confluence installations or tenants;</li>
+<li>circumvent security controls or attempt to access any data beyond your authorised Confluence permissions;</li>
+<li>use the App to generate fraudulent compliance claims to auditors, customers, or regulators.</li>
+</ul>
+<hr />
+<h3>8. Beta and Preview Features</h3>
+<p>Certain features are labelled &quot;Preview&quot;, &quot;Beta&quot;, or &quot;Coming Soon&quot;. These features:</p>
+<ul>
+<li>are provided for evaluation purposes only;</li>
+<li>may be incomplete, subject to change, or removed at any time;</li>
+<li>are provided without warranty or SLA commitment;</li>
+<li>should not be relied upon for production compliance work.</li>
+</ul>
+<p><strong>ISO 42001 and EU AI Act framework coverage</strong> are currently provided as Preview/advisory features. These reflect documentation readiness heuristics only and are not legal interpretations of the applicable regulations.</p>
+<hr />
+<h3>9. Fees and Licensing</h3>
+<p>The App uses Atlassian Marketplace&#39;s licensing system. If paid tiers apply:</p>
+<ul>
+<li>Fees are charged through Atlassian Marketplace per Atlassian&#39;s billing practices.</li>
+<li>Subscriptions are billed per user or per seat as defined in the listing.</li>
+<li>Atlassian processes payments and issues invoices; we do not handle payment card data.</li>
+<li>Cancellation takes effect at the end of the current billing period per Atlassian&#39;s refund policies.</li>
+</ul>
+<p>Free tier limitations are defined in the Marketplace listing and may change with notice.</p>
+<hr />
+<h3>10. No Compliance Guarantee</h3>
+<p>We expressly disclaim any representation that:</p>
+<ul>
+<li>use of the App will result in compliance with any law, regulation, or standard;</li>
+<li>a readiness score of any value means your organisation is compliant;</li>
+<li>a &quot;FOUND&quot; status for any control means the evidence is legally sufficient;</li>
+<li>the App&#39;s analysis satisfies any formal audit, certification, or regulatory requirement.</li>
+</ul>
+<p>The App is a documentation visibility and workflow tool. Its outputs are advisory only.</p>
+<hr />
+<h3>11. Privacy and Data</h3>
+<p>Your use of the App is also governed by our Privacy Policy (docs/PRIVACY_POLICY.md), incorporated here by reference.</p>
+<p>Key points:</p>
+<ul>
+<li>You retain ownership of your Confluence data. We claim no rights over your content.</li>
+<li>Page content is processed in memory and not stored.</li>
+<li>All stored data resides in Atlassian Forge Storage, isolated per installation.</li>
+<li>We do not sell or share your data with third parties.</li>
+</ul>
+<hr />
+<h3>12. Availability and Support</h3>
+<ul>
+<li>The App runs on Atlassian Forge. Availability is subject to Atlassian&#39;s infrastructure uptime.</li>
+<li>We make reasonable efforts to maintain the App but do not guarantee uninterrupted availability.</li>
+<li>We will communicate planned maintenance and significant changes through available channels.</li>
+</ul>
+<p><strong>Support:</strong></p>
+<ul>
+<li>Free tier: community support</li>
+<li>Paid tiers: email support at support@steiktech.de with response time targets defined in the pricing listing</li>
+</ul>
+<hr />
+<h3>13. Intellectual Property</h3>
+<p>The App and all related code, designs, documentation, and materials are the intellectual property of SteikTech or our licensors. These Terms do not transfer any intellectual property rights to you.</p>
+<hr />
+<h3>14. Confidentiality</h3>
+<p>Any non-public technical information about the App disclosed by us (such as through documentation or support interactions) is confidential. You agree not to disclose this to third parties without our consent.</p>
+<hr />
+<h3>15. Disclaimer of Warranties</h3>
+<p><strong>THE APP IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, COMPLETENESS, OR NON-INFRINGEMENT.</strong></p>
+<p>We do not warrant that:</p>
+<ul>
+<li>the App will be error-free or uninterrupted;</li>
+<li>readiness scores or gap analyses will be accurate or complete;</li>
+<li>the App will meet your specific compliance requirements;</li>
+<li>results will be admissible in any audit, legal, or regulatory proceeding.</li>
+</ul>
+<hr />
+<h3>16. Limitation of Liability</h3>
+<p>To the maximum extent permitted by applicable law, SteikTech and its officers, employees, and agents shall not be liable for:</p>
+<ul>
+<li>indirect, incidental, special, consequential, or punitive damages;</li>
+<li>loss of profits, revenue, data, or business opportunity;</li>
+<li>regulatory fines or penalties arising from your reliance on App outputs;</li>
+<li>audit failures resulting from the App&#39;s findings or omissions.</li>
+</ul>
+<p><strong>Our aggregate liability for any claim arising from these Terms or your use of the App shall not exceed the total fees paid by you to us in the three (3) months preceding the event giving rise to the claim.</strong> If no fees have been paid, our liability is limited to EUR 100.</p>
+<p>These limitations apply regardless of the theory of liability and even if we have been advised of the possibility of such damages.</p>
+<hr />
+<h3>17. Indemnification</h3>
+<p>You agree to indemnify and hold harmless SteikTech from any claims, damages, or expenses (including reasonable legal fees) arising from:</p>
+<ul>
+<li>your use of the App in violation of these Terms;</li>
+<li>your use of App outputs in formal compliance, legal, or audit processes without independent professional verification;</li>
+<li>your violation of any applicable law or third-party right.</li>
+</ul>
+<hr />
+<h3>18. Termination</h3>
+<p><strong>By us:</strong> We may suspend or terminate your access to the App if you violate these Terms, with or without notice.</p>
+<p><strong>By you:</strong> You may terminate by uninstalling the App from your Confluence site at any time. Prepaid fees are non-refundable except as required by Atlassian&#39;s Marketplace refund policy.</p>
+<p><strong>Effect of termination:</strong> Upon termination, your licence ends. App data stored in Atlassian Forge Storage is managed by the Atlassian Forge platform for that installation. We do not retain a separate copy of customer data on SteikTech systems. Any data you have exported (CSV, Audit Packs) remains under your control.</p>
+<hr />
+<h3>19. Changes to These Terms</h3>
+<p>We may update these Terms from time to time. We will notify you of material changes via the Atlassian Marketplace or the email address associated with your installation where available.</p>
+<p>Continued use of the App after the effective date of updated Terms constitutes acceptance of the changes. If you do not agree with a material change, you may terminate by uninstalling the App.</p>
+<hr />
+<h3>20. Governing Law and Jurisdiction</h3>
+<p>These Terms are governed by and construed in accordance with the laws of <strong>Germany</strong>, without regard to conflict of law principles.</p>
+<p>Any disputes shall be subject to the exclusive jurisdiction of the courts of <strong>Essen, Germany</strong>, unless mandatory consumer or data protection law requires otherwise.</p>
+<div class="notice">⚠️ <strong>Human action required:</strong> Confirm your registered legal entity, governing jurisdiction, and chosen dispute resolution venue with a lawyer before publishing.</div>
+<hr />
+<h3>21. Entire Agreement</h3>
+<p>These Terms, together with the Privacy Policy and any pricing terms published in the Atlassian Marketplace listing, constitute the entire agreement between you and SteikTech regarding the App.</p>
+<p>If any provision of these Terms is found unenforceable, the remaining provisions continue in full force.</p>
+<hr />
+<h3>22. Contact</h3>
+<p><strong>General:</strong> support@steiktech.de</p>
+<p><strong>Security:</strong> support@steiktech.de</p>
+<p><strong>General company email:</strong> info@steiktech.de</p>
+<p><strong>Phone:</strong> +49 15567 271427</p>
+<p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland</p>
+<hr />
+<p>*This is a prepared draft requiring legal review before publication.*</p>
+    </article>
+  </main>
+  <footer>
+    SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland · support@steiktech.de
+  </footer>
+</body>
+</html>

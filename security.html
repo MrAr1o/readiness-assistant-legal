@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security Disclosure - Readiness Assistant</title>
+  <meta name="description" content="How to report security issues and how we respond." />
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #172b4d;
+      --muted: #5e6c84;
+      --border: #dfe1e6;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --blue: #0c66e4;
+      --blue-dark: #0747a6;
+      --green: #216e4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f4f5f7;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 28px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0c66e4, #09326c);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand strong { display: block; font-size: 18px; line-height: 1.2; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    nav a {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 7px 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: var(--blue-dark);
+      background: #e9f2ff;
+      border-color: #b3d4ff;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 64px;
+    }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: 0; }
+    h1 { font-size: 34px; margin: 0 0 10px; }
+    h2 { font-size: 26px; margin: 34px 0 12px; }
+    h3 { font-size: 21px; margin: 28px 0 10px; }
+    h4, h5 { font-size: 18px; margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    a { color: var(--blue); }
+    code {
+      background: #f1f2f4;
+      border: 1px solid #dcdfe4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .92em;
+    }
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 34px 36px;
+    }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: #f0f6ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      color: #253858;
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    ul, ol { padding-left: 24px; }
+    li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-size: 13px; text-transform: uppercase; color: #42526e; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      main { padding: 22px 16px 44px; }
+      .hero, .content { padding: 22px 18px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">RA</div>
+        <div>
+          <strong>Readiness Assistant</strong>
+          <span>Legal, privacy and security information</span>
+        </div>
+      </div>
+      <nav><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms-of-service.html">Terms of Service</a><a href="./security.html" aria-current="page">Security Disclosure</a><a href="./security-faq.html">Security & Privacy FAQ</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SteikTech</p>
+      <h1>Security Disclosure</h1>
+      <p>How to report security issues and how we respond.</p>
+    </section>
+    <article class="content">
+      <h2>Security &amp; Vulnerability Disclosure Policy — Readiness Assistant</h2>
+<p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik</p>
+<p><strong>Address:</strong> Severinstraße 61, 45127 Essen, Deutschland</p>
+<p><strong>Security contact:</strong> support@steiktech.de</p>
+<p><strong>Last updated:</strong> June 2026</p>
+<p><strong>Version:</strong> 1.0</p>
+<hr />
+<h3>1. Overview</h3>
+<p>SteikTech takes security seriously. This policy describes how we handle security vulnerability reports for the Readiness Assistant app and what researchers and customers can expect from us.</p>
+<p>If you believe you have found a security issue in Readiness Assistant, please report it responsibly according to this policy.</p>
+<hr />
+<h3>2. How to Report a Vulnerability</h3>
+<p><strong>Email:</strong> support@steiktech.de</p>
+<div class="notice">During the initial test and beta phase, security reports are handled through the shared SteikTech support inbox. Before public Marketplace launch, consider creating a dedicated monitored security inbox such as <code>security@steiktech.de</code>.</div>
+<p><strong>Subject line format:</strong> <code>[SECURITY] Brief description — App: Readiness Assistant</code></p>
+<p><strong>Please include:</strong></p>
+<ul>
+<li>Description of the vulnerability and its potential impact</li>
+<li>Steps to reproduce (as specific as possible)</li>
+<li>Proof of concept if available (do not include actual exfiltrated data)</li>
+<li>Your contact information (optional — for acknowledgement and follow-up)</li>
+<li>Whether you would like public credit for the discovery</li>
+</ul>
+<p><strong>Please do NOT:</strong></p>
+<ul>
+<li>Disclose the vulnerability publicly before we have had a reasonable opportunity to assess and remediate it</li>
+<li>Attempt to exploit vulnerabilities against production Confluence sites you do not own or control</li>
+<li>Access or download data beyond what is necessary to demonstrate the issue</li>
+<li>Attempt denial-of-service attacks, spam, or destructive testing</li>
+</ul>
+<hr />
+<h3>3. Response Commitments</h3>
+<div class="table-wrap"><table><thead><tr><th>Milestone</th><th>Target timeframe</th></tr></thead><tbody><tr><td>Acknowledgement of receipt</td><td>Within 48 hours of report</td></tr><tr><td>Initial triage and severity assessment</td><td>Within 7 business days</td></tr><tr><td>Remediation timeline provided (for confirmed issues)</td><td>Within 14 business days</td></tr><tr><td>Resolution — Critical (CVSS ≥ 9.0)</td><td>Target: 14 days from confirmation</td></tr><tr><td>Resolution — High (CVSS 7.0–8.9)</td><td>Target: 30 days from confirmation</td></tr><tr><td>Resolution — Medium (CVSS 4.0–6.9)</td><td>Target: 60 days from confirmation</td></tr><tr><td>Resolution — Low/Informational (CVSS &lt; 4.0)</td><td>Addressed in next planned release</td></tr></tbody></table></div>
+<p>These are targets, not contractual SLAs. For a 2-person team, timelines may slip for complex issues. We will communicate proactively if a committed timeline cannot be met.</p>
+<hr />
+<h3>4. Severity Levels</h3>
+<p>We use a simplified severity classification based on impact and exploitability:</p>
+<div class="table-wrap"><table><thead><tr><th>Severity</th><th>Description</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Critical</strong></td><td>Remote code execution, authentication bypass, cross-tenant data access, mass data exfiltration</td><td>Forge function compromise allowing access to another tenant&#39;s data</td></tr><tr><td><strong>High</strong></td><td>Significant data exposure, privilege escalation within an installation, stored XSS with widespread impact</td><td>Admin-level stored XSS in the app UI; leaking another user&#39;s workflow records</td></tr><tr><td><strong>Medium</strong></td><td>Limited data exposure, reflected XSS, logic flaws with limited impact</td><td>A user seeing another user&#39;s page title in a finding they shouldn&#39;t see</td></tr><tr><td><strong>Low / Informational</strong></td><td>Minor information disclosure, theoretical issues without practical exploit path</td><td>App version disclosure; minor config hardening issues</td></tr></tbody></table></div>
+<hr />
+<h3>5. Scope</h3>
+<p><strong>In scope (please report):</strong></p>
+<ul>
+<li>Readiness Assistant app code (Forge backend resolvers and frontend)</li>
+<li>Data handling vulnerabilities (e.g. raw page content being stored unintentionally)</li>
+<li>Authentication or authorisation flaws within the app</li>
+<li>Cross-tenant data access vulnerabilities</li>
+<li>XSS, CSRF, or injection vulnerabilities in the UI</li>
+<li>Sensitive data exposure in Forge logs</li>
+</ul>
+<p><strong>Out of scope (report to respective parties):</strong></p>
+<ul>
+<li>Atlassian Forge platform vulnerabilities → report to Atlassian: <a href="https://www.atlassian.com/trust/security/vulnerability-disclosure">https://www.atlassian.com/trust/security/vulnerability-disclosure</a></li>
+<li>Confluence Cloud vulnerabilities → report to Atlassian</li>
+<li>Third-party npm library vulnerabilities → report to the respective project maintainers</li>
+<li>Social engineering or phishing attacks</li>
+</ul>
+<hr />
+<h3>6. Triage Process</h3>
+<p>When a report is received:</p>
+<ol>
+<li><strong>Receipt confirmation (48h):</strong> Automated or manual acknowledgement sent to reporter.</li>
+<li><strong>Initial review (7 days):</strong> One of the two founders reviews the report, reproduces if possible, and assigns a severity level.</li>
+<li><strong>Response to reporter:</strong> We inform the reporter of our assessment and planned timeline.</li>
+<li><strong>Remediation:</strong> Depending on severity, we patch the app code and deploy an update via <code>forge deploy</code>.</li>
+<li><strong>Disclosure coordination:</strong> We agree with the reporter on timing for any public disclosure.</li>
+<li><strong>Post-fix update:</strong> We notify the reporter when a fix is deployed. For significant issues, we publish a security advisory in our release notes.</li>
+</ol>
+<hr />
+<h3>7. Responsible Disclosure Timeline</h3>
+<p>We request a <strong>90-day coordinated disclosure window</strong> from the date of our confirmed receipt of a valid vulnerability report. This means:</p>
+<ul>
+<li>We ask reporters not to publish details publicly for 90 days while we remediate.</li>
+<li>If we resolve the issue before 90 days, we will agree with the reporter on an earlier disclosure date.</li>
+<li>If we cannot resolve within 90 days, we will communicate our timeline and discuss options with the reporter.</li>
+<li>For critical issues causing active harm, we may request an expedited embargo.</li>
+</ul>
+<hr />
+<h3>8. Safe Harbour</h3>
+<p>SteikTech will not pursue legal action against security researchers who:</p>
+<ul>
+<li>act in good faith and follow this policy;</li>
+<li>do not access, modify, or exfiltrate data from Confluence sites they do not own or have explicit permission to test;</li>
+<li>do not disrupt service availability;</li>
+<li>report findings to us before any public disclosure;</li>
+<li>do not share vulnerability details with third parties before the coordinated disclosure window has elapsed.</li>
+</ul>
+<p>We consider good-faith security research to be a service to the community and to our customers.</p>
+<hr />
+<h3>9. Recognition</h3>
+<p>We will:</p>
+<ul>
+<li>Acknowledge responsible disclosers in our release notes (with the reporter&#39;s consent);</li>
+<li>Maintain a private record of all security reports for internal tracking.</li>
+</ul>
+<p>We do not currently offer a financial bug bounty programme.</p>
+<hr />
+<h3>10. Contact for Ongoing Security Enquiries</h3>
+<ul>
+<li><strong>Vulnerability reports:</strong> support@steiktech.de</li>
+<li><strong>General security questions:</strong> support@steiktech.de (for non-vulnerability security questions)</li>
+<li><strong>Atlassian Marketplace security review enquiries:</strong> support@steiktech.de</li>
+</ul>
+<hr />
+<h3>11. Internal Process Notes (for SteikTech team)</h3>
+<div class="notice">This section is internal guidance and should be removed before publishing externally.</div>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+<li>Primary security contact: [ASSIGN FOUNDER NAME]</li>
+<li>Backup: [ASSIGN SECOND FOUNDER NAME]</li>
+</ul>
+<p><strong>When a report arrives at support@steiktech.de:</strong></p>
+<ol>
+<li>Forward to the assigned security contact immediately.</li>
+<li>Log the report in a private tracking document (not a public Jira/GitHub issue).</li>
+<li>Send acknowledgement email to reporter within 48 hours.</li>
+<li>Reproduce the issue in a development environment, not production.</li>
+<li>If confirmed critical: patch immediately, deploy to production, notify reporter.</li>
+<li>If confirmed high: schedule fix in next sprint, keep reporter informed.</li>
+<li>Document the issue and resolution in a private security log.</li>
+</ol>
+<p><strong>Forge deployment of a security fix:</strong></p>
+<p>```bash</p>
+<h2>Build frontend</h2>
+<p>cd static/hello-world &amp;&amp; npm run build &amp;&amp; cd ../..</p>
+<h2>Run all tests</h2>
+<p>npm test -- --runInBand</p>
+<h2>Deploy fix</h2>
+<p>npx -y @forge/cli@latest deploy --environment production</p>
+<h2>Monitor logs</h2>
+<p>npx -y @forge/cli@latest logs --tail</p>
+<p>```</p>
+    </article>
+  </main>
+  <footer>
+    SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland · support@steiktech.de
+  </footer>
+</body>
+</html>

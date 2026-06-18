@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security & Privacy FAQ - Readiness Assistant</title>
+  <meta name="description" content="Common privacy and security answers for customers and reviewers." />
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #172b4d;
+      --muted: #5e6c84;
+      --border: #dfe1e6;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --blue: #0c66e4;
+      --blue-dark: #0747a6;
+      --green: #216e4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f4f5f7;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 28px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0c66e4, #09326c);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand strong { display: block; font-size: 18px; line-height: 1.2; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    nav a {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 7px 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: var(--blue-dark);
+      background: #e9f2ff;
+      border-color: #b3d4ff;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 64px;
+    }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: 0; }
+    h1 { font-size: 34px; margin: 0 0 10px; }
+    h2 { font-size: 26px; margin: 34px 0 12px; }
+    h3 { font-size: 21px; margin: 28px 0 10px; }
+    h4, h5 { font-size: 18px; margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    a { color: var(--blue); }
+    code {
+      background: #f1f2f4;
+      border: 1px solid #dcdfe4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .92em;
+    }
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 34px 36px;
+    }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: #f0f6ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      color: #253858;
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    ul, ol { padding-left: 24px; }
+    li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-size: 13px; text-transform: uppercase; color: #42526e; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      main { padding: 22px 16px 44px; }
+      .hero, .content { padding: 22px 18px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">RA</div>
+        <div>
+          <strong>Readiness Assistant</strong>
+          <span>Legal, privacy and security information</span>
+        </div>
+      </div>
+      <nav><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms-of-service.html">Terms of Service</a><a href="./security.html">Security Disclosure</a><a href="./security-faq.html" aria-current="page">Security & Privacy FAQ</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SteikTech</p>
+      <h1>Security & Privacy FAQ</h1>
+      <p>Common privacy and security answers for customers and reviewers.</p>
+    </section>
+    <article class="content">
+      <h2>Security &amp; Privacy FAQ — Readiness Assistant</h2>
+<p>*Public-facing. Last updated: June 2026.*</p>
+<p>This page answers the most common security and privacy questions about how Readiness Assistant works, what data it accesses, and how that data is handled.</p>
+<p>For vulnerability reports, contact: <strong>support@steiktech.de</strong></p>
+<p>For privacy questions, contact: <strong>support@steiktech.de</strong></p>
+<hr />
+<h3>General</h3>
+<h4>What does this app actually do?</h4>
+<p>Readiness Assistant scans your Confluence Cloud spaces to help you prepare for audits, certifications, and enterprise customer reviews. It identifies documentation gaps, stale pages, ownerless pages, and missing controls — and generates a readiness score and gap checklist.</p>
+<p>It does not certify compliance, issue audit opinions, or provide legal advice.</p>
+<hr />
+<h4>Is this a compliance certification tool?</h4>
+<p>No. This app is a <strong>documentation visibility and readiness workflow</strong> tool. It helps you see what evidence exists in Confluence, what is missing, and what needs to be fixed before an audit.</p>
+<p>A readiness score or &quot;FOUND&quot; status does not mean your organisation is compliant with any regulation or standard. All outputs are advisory only. Formal compliance determinations require qualified legal, audit, or compliance professionals.</p>
+<hr />
+<h4>Does the app provide legal advice?</h4>
+<p>No. Nothing produced by this app — including gap reports, readiness scores, control mappings, or Audit Pack exports — constitutes legal advice, regulatory guidance, or audit assurance.</p>
+<hr />
+<h3>Data Access</h3>
+<h4>What Confluence data does the app read?</h4>
+<p>The app reads:</p>
+<ul>
+<li><strong>Page titles and body text</strong> — to scan for evidence keywords that map to compliance controls, and to detect sensitive data patterns (if that feature is enabled)</li>
+<li><strong>Page metadata</strong> — last-modified dates and author information, to detect stale and ownerless pages</li>
+<li><strong>Space names and keys</strong> — to list available spaces and apply filtering</li>
+</ul>
+<p>The app uses four Atlassian API scopes: <code>read:page:confluence</code>, <code>read:space:confluence</code>, <code>read:confluence-user</code>, and <code>storage:app</code>.</p>
+<hr />
+<h4>Can the app write to or modify Confluence pages?</h4>
+<p><strong>No.</strong> The app requests <strong>read-only</strong> access to Confluence content. It cannot create, edit, move, or delete any Confluence pages, spaces, or user accounts.</p>
+<hr />
+<h4>Does the app access all spaces automatically?</h4>
+<p>The app scans the Confluence spaces accessible to the installing user&#39;s permissions. Admins can configure <strong>space exclusions</strong> in Settings to prevent specific spaces from being scanned. Individual page exclusions are also supported.</p>
+<hr />
+<h3>Data Storage</h3>
+<h4>Does the app store raw Confluence page content?</h4>
+<p><strong>No.</strong> Page body text is loaded into memory during a scan, processed, and then discarded. The raw text is never written to storage.</p>
+<p>What is stored instead: references to pages (title, URL, space key), matched keywords, and derived findings (e.g. &quot;GDPR-1: privacy policy documentation — MISSING&quot;).</p>
+<hr />
+<h4>Where is data stored?</h4>
+<p>All data is stored in <strong>Atlassian Forge Storage</strong> — a per-installation, isolated key-value store that is part of Atlassian&#39;s infrastructure. Each app installation has its own isolated storage namespace. No data is stored on SteikTech&#39;s own servers or external databases.</p>
+<hr />
+<h4>What exactly is stored in Forge Storage?</h4>
+<div class="table-wrap"><table><thead><tr><th>Data</th><th>Stored?</th><th>Notes</th></tr></thead><tbody><tr><td>Compliance findings (control IDs, status, gap descriptions)</td><td>Yes</td><td>No raw page content</td></tr><tr><td>Health findings (page titles, staleness, ownership)</td><td>Yes</td><td>No page body stored</td></tr><tr><td>Sensitive data pattern matches</td><td>Yes (redacted only)</td><td>Original values discarded</td></tr><tr><td>Workflow records (owner names, due dates, notes)</td><td>Yes</td><td>Only if manually entered</td></tr><tr><td>Scan summaries (counts, timestamps)</td><td>Yes</td><td>Aggregate data only</td></tr><tr><td>App settings and configuration</td><td>Yes</td><td>No personal data</td></tr><tr><td>Raw Confluence page content</td><td><strong>No</strong></td><td>Never stored</td></tr><tr><td>Passwords, tokens, credentials</td><td><strong>No</strong></td><td>Redacted previews only</td></tr></tbody></table></div>
+<hr />
+<h4>Does the app send data outside Atlassian?</h4>
+<p><strong>No. Version 1 makes no calls to any external service.</strong></p>
+<p>All processing runs within the Atlassian Forge runtime. There are no calls to:</p>
+<ul>
+<li>External AI providers (OpenAI, Anthropic, etc.)</li>
+<li>Third-party analytics services</li>
+<li>External databases or APIs</li>
+<li>Any SteikTech-operated servers</li>
+</ul>
+<hr />
+<h4>Does the app use external AI or LLMs?</h4>
+<p><strong>No, not in version 1.</strong> All analysis is deterministic, keyword-heuristic analysis — no machine learning, no external AI API calls.</p>
+<p>If a future version introduces optional AI features, this will be clearly disclosed and opt-in.</p>
+<hr />
+<h3>Data Retention and Deletion</h3>
+<h4>How long is data retained?</h4>
+<ul>
+<li>Compliance and health findings: latest scan retained, overwritten by subsequent scans</li>
+<li>Scan summaries: last 30 scans retained</li>
+<li>Workflow records: until manually deleted or the app is uninstalled</li>
+<li>App settings: until reset or uninstalled</li>
+</ul>
+<hr />
+<h4>What happens when the app is uninstalled?</h4>
+<p>App data stored in Atlassian Forge Storage is managed by the Atlassian Forge platform for that installation. SteikTech does not retain a separate copy or backup on its own systems.</p>
+<hr />
+<h4>How can admins delete stored data without uninstalling?</h4>
+<p>Admins can use the <strong>&quot;Reset Data&quot;</strong> function in the app&#39;s Settings panel to clear all stored scan findings, scores, and history.</p>
+<p>For deletion of specific workflow records, use the workflow record management interface within the app.</p>
+<hr />
+<h3>Sensitive Data Detection</h3>
+<h4>What is the Sensitive Data Check feature?</h4>
+<p>The Sensitive Data Check (called &quot;Data Safety&quot;) is an <strong>optional, secondary feature that is disabled by default</strong>. When enabled by a Confluence admin:</p>
+<ul>
+<li>The app scans page text for common credential patterns (API keys, tokens, connection strings, PII patterns — over 30 pattern types)</li>
+<li>When a match is found, a <strong>redacted preview</strong> is stored (e.g. <code>sk_live_51H...xQ</code>) — the original value is discarded immediately</li>
+<li>No credential or secret is ever stored in plain text</li>
+</ul>
+<hr />
+<h4>Does the app ever store secrets or credentials in plain text?</h4>
+<p><strong>No.</strong> The Sensitive Data Check detects patterns and immediately creates a redacted preview. The original matched value is never written to storage.</p>
+<hr />
+<h3>Permissions</h3>
+<h4>Why does the app need <code>read:page:confluence</code>?</h4>
+<p>To scan pages for compliance evidence. The app reads page text to detect whether documentation matching each compliance control exists.</p>
+<h4>Why does the app need <code>read:space:confluence</code>?</h4>
+<p>To list spaces so users can see which spaces are scanned, and to apply space inclusion/exclusion configuration.</p>
+<h4>Why does the app need <code>read:confluence-user</code>?</h4>
+<p>To detect ownerless pages. The app reads the author/owner linked to each page and surfaces pages with no identifiable owner.</p>
+<h4>Why does the app need <code>storage:app</code>?</h4>
+<p>To persist scan findings, readiness scores, workflow records, and settings between sessions. Without storage, the app would need to re-scan the entire workspace every time the dashboard is opened.</p>
+<hr />
+<h3>Data Residency and Infrastructure</h3>
+<h4>Does the app support data residency?</h4>
+<p>The app stores data in Atlassian Forge Storage. The physical data residency location is determined by Atlassian&#39;s infrastructure and your organisation&#39;s Atlassian subscription agreement. The app does not independently control data residency.</p>
+<p>If data residency location is a contractual or regulatory requirement for your organisation, consult Atlassian&#39;s documentation on Forge Storage data residency.</p>
+<hr />
+<h4>Does the app participate in Atlassian&#39;s &quot;Runs on Atlassian&quot; program?</h4>
+<p>The app is built entirely on Atlassian Forge and uses only Atlassian-provided infrastructure. Eligibility for the Runs on Atlassian badge is subject to formal Atlassian Marketplace review.</p>
+<div class="notice">⚠️ Verify &quot;Runs on Atlassian&quot; eligibility in the Atlassian Marketplace Partner Portal.</div>
+<hr />
+<h4>Where is the app infrastructure hosted?</h4>
+<p>The app has no independently-hosted infrastructure. It runs entirely as an Atlassian Forge function — Atlassian&#39;s serverless platform for Marketplace apps.</p>
+<hr />
+<h3>Vulnerability Handling</h3>
+<h4>How does the app handle security vulnerabilities?</h4>
+<p>We maintain a responsible disclosure process. If you discover a security vulnerability:</p>
+<ol>
+<li>Report it to <strong>support@steiktech.de</strong></li>
+<li>We acknowledge within <strong>48 hours</strong></li>
+<li>We provide initial assessment within <strong>7 days</strong></li>
+<li>Critical issues: target remediation within <strong>30 days</strong></li>
+</ol>
+<p>We will not pursue legal action against researchers who act in good faith, report responsibly, and do not access data beyond what is necessary to demonstrate the issue.</p>
+<p>See our full Vulnerability Disclosure Policy: [SECURITY_DISCLOSURE.md]</p>
+<hr />
+<h4>Does the app have any compliance certifications?</h4>
+<p>The app itself is not certified against ISO 27001, SOC 2, or other standards. It runs on Atlassian Forge infrastructure; Atlassian&#39;s own compliance certifications apply to the underlying platform.</p>
+<hr />
+<h3>Contact</h3>
+<div class="table-wrap"><table><thead><tr><th>Purpose</th><th>Contact</th></tr></thead><tbody><tr><td>General questions</td><td>support@steiktech.de</td></tr><tr><td>Security vulnerabilities</td><td>support@steiktech.de</td></tr><tr><td>Privacy / data requests</td><td>support@steiktech.de</td></tr><tr><td>Company email</td><td>info@steiktech.de</td></tr><tr><td>Phone</td><td>+49 15567 271427</td></tr><tr><td>Operator</td><td>SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland</td></tr></tbody></table></div>
+    </article>
+  </main>
+  <footer>
+    SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland · support@steiktech.de
+  </footer>
+</body>
+</html>
