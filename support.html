@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support - Readiness Assistant</title>
+  <meta name="description" content="How to contact Readiness Assistant support." />
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #172b4d;
+      --muted: #5e6c84;
+      --border: #dfe1e6;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --blue: #0c66e4;
+      --blue-dark: #0747a6;
+      --green: #216e4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f4f5f7;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 28px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0c66e4, #09326c);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand strong { display: block; font-size: 18px; line-height: 1.2; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    nav a {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 7px 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: var(--blue-dark);
+      background: #e9f2ff;
+      border-color: #b3d4ff;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 64px;
+    }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: 0; }
+    h1 { font-size: 34px; margin: 0 0 10px; }
+    h2 { font-size: 26px; margin: 34px 0 12px; }
+    h3 { font-size: 21px; margin: 28px 0 10px; }
+    h4, h5 { font-size: 18px; margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    a { color: var(--blue); }
+    code {
+      background: #f1f2f4;
+      border: 1px solid #dcdfe4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .92em;
+    }
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 34px 36px;
+    }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: #f0f6ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      color: #253858;
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    ul, ol { padding-left: 24px; }
+    li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-size: 13px; text-transform: uppercase; color: #42526e; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      main { padding: 22px 16px 44px; }
+      .hero, .content { padding: 22px 18px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">RA</div>
+        <div>
+          <strong>Readiness Assistant</strong>
+          <span>Legal, privacy and security information</span>
+        </div>
+      </div>
+      <nav><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms-of-service.html">Terms of Service</a><a href="./security.html">Security Disclosure</a><a href="./security-faq.html">Security & Privacy FAQ</a><a href="./support.html" aria-current="page">Support</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SteikTech</p>
+      <h1>Support</h1>
+      <p>How to contact Readiness Assistant support.</p>
+    </section>
+    <article class="content">
+      <h2>Support</h2>
+<p>Readiness Assistant support is handled by SteikTech.</p>
+<h3>Contact</h3>
+<p>For product support, billing questions, installation help, or data requests, contact:</p>
+<p><strong>support@steiktech.de</strong></p>
+<p>For the initial test and beta phase, vulnerability reports are also handled through the same monitored inbox:</p>
+<p><strong>support@steiktech.de</strong></p>
+<p>Before public Marketplace launch, SteikTech may add a dedicated security inbox such as <code>security@steiktech.de</code>.</p>
+<h3>What To Include</h3>
+<p>When contacting support, include:</p>
+<ul>
+<li>your Confluence site name;</li>
+<li>the app environment if known;</li>
+<li>the feature affected;</li>
+<li>steps to reproduce the issue;</li>
+<li>screenshots if helpful;</li>
+<li>whether the issue affects a beta test, Marketplace review, or production use.</li>
+</ul>
+<p>Do not send passwords, API keys, personal access tokens, or sensitive Confluence page content by email.</p>
+<h3>Expected Response</h3>
+<p>During beta, SteikTech aims to acknowledge support requests within 2 business days.</p>
+<p>Security reports are prioritised and should receive an acknowledgement within 48 hours.</p>
+<h3>Useful Links</h3>
+<ul>
+<li>Privacy Policy: <code>privacy-policy.html</code></li>
+<li>Terms of Service: <code>terms-of-service.html</code></li>
+<li>Security Disclosure: <code>security.html</code></li>
+<li>Security &amp; Privacy FAQ: <code>security-faq.html</code></li>
+</ul>
+    </article>
+  </main>
+  <footer>
+    SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland · support@steiktech.de
+  </footer>
+</body>
+</html>
