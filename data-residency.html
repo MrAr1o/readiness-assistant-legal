@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Residency - Readiness Assistant</title>
+  <meta name="description" content="How Readiness Assistant app data residency works on Atlassian Forge." />
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #172b4d;
+      --muted: #5e6c84;
+      --border: #dfe1e6;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --blue: #0c66e4;
+      --blue-dark: #0747a6;
+      --green: #216e4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f4f5f7;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 28px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0c66e4, #09326c);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand strong { display: block; font-size: 18px; line-height: 1.2; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    nav a {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 7px 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: var(--blue-dark);
+      background: #e9f2ff;
+      border-color: #b3d4ff;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 64px;
+    }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: 0; }
+    h1 { font-size: 34px; margin: 0 0 10px; }
+    h2 { font-size: 26px; margin: 34px 0 12px; }
+    h3 { font-size: 21px; margin: 28px 0 10px; }
+    h4, h5 { font-size: 18px; margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    a { color: var(--blue); }
+    code {
+      background: #f1f2f4;
+      border: 1px solid #dcdfe4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .92em;
+    }
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 34px 36px;
+    }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: #f0f6ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      color: #253858;
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    ul, ol { padding-left: 24px; }
+    li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-size: 13px; text-transform: uppercase; color: #42526e; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      main { padding: 22px 16px 44px; }
+      .hero, .content { padding: 22px 18px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">RA</div>
+        <div>
+          <strong>Readiness Assistant</strong>
+          <span>Legal, privacy and security information</span>
+        </div>
+      </div>
+      <nav><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms-of-service.html">Terms of Service</a><a href="./security.html">Security Disclosure</a><a href="./security-faq.html">Security & Privacy FAQ</a><a href="./data-residency.html" aria-current="page">Data Residency</a><a href="./support.html">Support</a><a href="./support-commitments.html">Support Commitments</a><a href="./refund-cancellation.html">Refund & Cancellation</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SteikTech</p>
+      <h1>Data Residency</h1>
+      <p>How Readiness Assistant app data residency works on Atlassian Forge.</p>
+    </section>
+    <article class="content">
+      <h2>Data Residency - Readiness Assistant</h2>
+<p><strong>Document status:</strong> Public operational summary</p>
+<p><strong>App:</strong> Readiness Assistant</p>
+<p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik</p>
+<p><strong>Last updated:</strong> July 7, 2026</p>
+<p><strong>Version:</strong> 1.0</p>
+<p>This page explains how data residency works for Readiness Assistant and what customers should verify in Atlassian Administration.</p>
+<hr />
+<h3>1. Short Answer</h3>
+<p>Readiness Assistant is built on Atlassian Forge. The app uses:</p>
+<ul>
+<li>Atlassian Forge functions for app execution;</li>
+<li>Atlassian Forge Storage for persistent app data;</li>
+<li>Confluence Cloud APIs for read-only page and space access;</li>
+<li>optional Atlassian-hosted Forge LLM routing for administrator-triggered AI assistance.</li>
+</ul>
+<p>Readiness Assistant does <strong>not</strong> use a SteikTech-operated app server, external database, external analytics platform, external CDN for customer data, or direct vendor AI API.</p>
+<p>Data residency for in-scope app data is governed by Atlassian&#39;s Forge and Confluence data residency behavior. SteikTech does not independently choose or override the customer&#39;s Atlassian residency location.</p>
+<hr />
+<h3>2. In-Scope App Data</h3>
+<p>The following data is treated as in-scope app data for Readiness Assistant residency purposes when stored by the app:</p>
+<ul>
+<li>derived compliance findings;</li>
+<li>documentation health findings;</li>
+<li>redacted sensitive data finding previews;</li>
+<li>AI inventory metadata;</li>
+<li>anonymized AI review output;</li>
+<li>scan summaries and readiness scores;</li>
+<li>app settings;</li>
+<li>workflow records, including owner display names entered by administrators.</li>
+</ul>
+<p>This data is stored in Atlassian Forge Storage for the app installation.</p>
+<hr />
+<h3>3. Data Not Stored by the App</h3>
+<p>Readiness Assistant does not store:</p>
+<ul>
+<li>raw Confluence page body text;</li>
+<li>raw Confluence page HTML;</li>
+<li>original credentials, secrets, tokens, or passwords;</li>
+<li>raw Forge LLM prompts;</li>
+<li>raw bounded AI excerpts;</li>
+<li>original detected sensitive values;</li>
+<li>customer payment card data;</li>
+<li>customer billing records;</li>
+<li>customer API keys.</li>
+</ul>
+<p>Raw page content is processed transiently during a scan and then discarded.</p>
+<hr />
+<h3>4. How Residency Is Determined</h3>
+<p>For Forge apps that use persistent Forge hosted storage, Atlassian documents that in-scope app data can follow the host Atlassian product&#39;s chosen location when the app is eligible.</p>
+<p>For Readiness Assistant:</p>
+<ul>
+<li>the required Atlassian product is Confluence Cloud;</li>
+<li>app data is stored in Forge hosted storage;</li>
+<li>no remote app storage is configured;</li>
+<li>no external app backend is configured.</li>
+</ul>
+<p>If the customer&#39;s Confluence product is pinned to a supported Atlassian data residency location and the app is eligible for pinned status, Atlassian&#39;s platform behavior determines where in-scope app data is hosted and moved.</p>
+<p>If the Confluence product is not pinned, Atlassian may show the product or app as Not Set or Global, depending on the customer&#39;s Atlassian configuration.</p>
+<hr />
+<h3>5. Customer Verification</h3>
+<p>Organization administrators can verify data residency status in Atlassian Administration:</p>
+<ol>
+<li>Open Atlassian Administration.</li>
+<li>Select the relevant organization.</li>
+<li>Go to <strong>Data management</strong> &gt; <strong>Data residency</strong>.</li>
+<li>Review the Confluence location and any Marketplace app status shown by Atlassian.</li>
+</ol>
+<p>If Atlassian displays Readiness Assistant as pinned, the app is following Atlassian&#39;s current pinned app data residency behavior. If the app status is not pinned, not shown, or unclear, contact support@steiktech.de and include the Atlassian app details shown in the admin console.</p>
+<hr />
+<h3>6. Runs on Atlassian Status</h3>
+<p>Readiness Assistant is designed to run entirely on Atlassian Forge infrastructure and currently uses Atlassian-hosted compute and storage only.</p>
+<p>The Runs on Atlassian Marketplace badge must still be verified and granted through Atlassian&#39;s Partner Portal process. Until the badge is visible on the Marketplace listing, customers should treat Runs on Atlassian status as pending verification.</p>
+<hr />
+<h3>7. Important Limitations</h3>
+<ul>
+<li>SteikTech cannot manually pin a customer&#39;s app data to a region outside Atlassian&#39;s residency controls.</li>
+<li>Data residency is not selected per page, space, project, user, or framework inside Readiness Assistant.</li>
+<li>Customer-exported CSV files and Audit Packs leave Forge Storage when downloaded and are then controlled by the customer.</li>
+<li>Voluntary support emails to support@steiktech.de are outside automated in-app processing.</li>
+<li>Atlassian controls Forge infrastructure, residency mechanics, migration timing, backups, and platform-level data handling.</li>
+<li>Optional Forge LLM routing is provided through Atlassian&#39;s Forge platform terms and controls.</li>
+</ul>
+<hr />
+<h3>8. Related Documents</h3>
+<ul>
+<li>Privacy Policy: <a href="https://mrar1o.github.io/readiness-assistant-legal/privacy-policy.html">https://mrar1o.github.io/readiness-assistant-legal/privacy-policy.html</a></li>
+<li>Security &amp; Privacy FAQ: <a href="https://mrar1o.github.io/readiness-assistant-legal/security-faq.html">https://mrar1o.github.io/readiness-assistant-legal/security-faq.html</a></li>
+<li>Support: <a href="https://mrar1o.github.io/readiness-assistant-legal/support.html">https://mrar1o.github.io/readiness-assistant-legal/support.html</a></li>
+</ul>
+<hr />
+<h3>9. Atlassian References</h3>
+<ul>
+<li>Forge data residency: <a href="https://developer.atlassian.com/platform/forge/data-residency/">https://developer.atlassian.com/platform/forge/data-residency/</a></li>
+<li>Forge storage: <a href="https://developer.atlassian.com/platform/forge/storage/">https://developer.atlassian.com/platform/forge/storage/</a></li>
+<li>Atlassian data residency: <a href="https://support.atlassian.com/security-and-access-policies/docs/understand-data-residency/">https://support.atlassian.com/security-and-access-policies/docs/understand-data-residency/</a></li>
+<li>Runs on Atlassian overview: <a href="https://www.atlassian.com/blog/development/runs-on-atlassian-now-available">https://www.atlassian.com/blog/development/runs-on-atlassian-now-available</a></li>
+</ul>
+    </article>
+  </main>
+  <footer>
+    SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland · support@steiktech.de
+  </footer>
+</body>
+</html>
