@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Refund & Cancellation - Readiness Assistant</title>
+  <meta name="description" content="Refund, cancellation, and billing process summary for Paid via Atlassian customers." />
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #172b4d;
+      --muted: #5e6c84;
+      --border: #dfe1e6;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --blue: #0c66e4;
+      --blue-dark: #0747a6;
+      --green: #216e4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f4f5f7;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 28px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0c66e4, #09326c);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand strong { display: block; font-size: 18px; line-height: 1.2; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    nav a {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 7px 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a[aria-current="page"] {
+      color: var(--blue-dark);
+      background: #e9f2ff;
+      border-color: #b3d4ff;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 64px;
+    }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: 0; }
+    h1 { font-size: 34px; margin: 0 0 10px; }
+    h2 { font-size: 26px; margin: 34px 0 12px; }
+    h3 { font-size: 21px; margin: 28px 0 10px; }
+    h4, h5 { font-size: 18px; margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    a { color: var(--blue); }
+    code {
+      background: #f1f2f4;
+      border: 1px solid #dcdfe4;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .92em;
+    }
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 34px 36px;
+    }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: #f0f6ff;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      color: #253858;
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    ul, ol { padding-left: 24px; }
+    li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+    th { background: var(--soft); font-size: 13px; text-transform: uppercase; color: #42526e; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      main { padding: 22px 16px 44px; }
+      .hero, .content { padding: 22px 18px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">RA</div>
+        <div>
+          <strong>Readiness Assistant</strong>
+          <span>Legal, privacy and security information</span>
+        </div>
+      </div>
+      <nav><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms-of-service.html">Terms of Service</a><a href="./security.html">Security Disclosure</a><a href="./security-faq.html">Security & Privacy FAQ</a><a href="./support.html">Support</a><a href="./support-commitments.html">Support Commitments</a><a href="./refund-cancellation.html" aria-current="page">Refund & Cancellation</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SteikTech</p>
+      <h1>Refund & Cancellation</h1>
+      <p>Refund, cancellation, and billing process summary for Paid via Atlassian customers.</p>
+    </section>
+    <article class="content">
+      <h2>Refund and Cancellation Policy - Readiness Assistant</h2>
+<p><strong>Document status:</strong> Public operational policy</p>
+<p><strong>App:</strong> Readiness Assistant</p>
+<p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik</p>
+<p><strong>Last updated:</strong> July 7, 2026</p>
+<p><strong>Version:</strong> 1.0</p>
+<div class="notice">This policy summarizes the intended customer-facing refund and cancellation position for Readiness Assistant when sold as a Paid via Atlassian Marketplace app. Atlassian&#39;s current Marketplace billing and refund terms control the payment flow. Review this policy before public listing and after any Atlassian Marketplace policy change.</div>
+<hr />
+<h3>1. Billing Channel</h3>
+<p>Readiness Assistant is intended to be sold through <strong>Paid via Atlassian</strong>.</p>
+<ul>
+<li>Customers purchase, evaluate, renew, cancel, and manage billing through Atlassian Marketplace and Atlassian billing.</li>
+<li>Atlassian processes payments and issues invoices.</li>
+<li>SteikTech does not collect payment card data through the app.</li>
+</ul>
+<hr />
+<h3>2. Trial and Evaluation</h3>
+<p>If Atlassian Marketplace provides an evaluation period for the app, the evaluation period and any extension process are governed by Atlassian&#39;s Marketplace billing flow.</p>
+<p>Customers should manage trials and subscriptions through their Atlassian admin or billing console.</p>
+<hr />
+<h3>3. Refunds</h3>
+<p>For Paid via Atlassian orders, refunds are governed by Atlassian&#39;s current Marketplace terms and support process.</p>
+<p>As of July 7, 2026, Atlassian&#39;s published Marketplace terms and billing support materials state that:</p>
+<ul>
+<li>initial paid orders for third-party Marketplace apps may be cancelled and refunded within the applicable initial 30-day period;</li>
+<li>renewals and upgrades are generally non-refundable unless Atlassian policy or law requires otherwise;</li>
+<li>refund requests outside Atlassian&#39;s standard window may require vendor approval or Atlassian discretion.</li>
+</ul>
+<p>Customers should request refunds through Atlassian billing support or the process shown in their Atlassian billing console. If Atlassian asks for vendor input, customers may contact support@steiktech.de with:</p>
+<ul>
+<li>site URL or cloud ID, if available;</li>
+<li>Marketplace order or invoice reference;</li>
+<li>app edition;</li>
+<li>purchase date;</li>
+<li>reason for the request; and</li>
+<li>whether the app is still installed.</li>
+</ul>
+<p>SteikTech will review exception requests in good faith, but cannot guarantee refunds outside Atlassian&#39;s rules or billing process.</p>
+<hr />
+<h3>4. Cancellation</h3>
+<p>Customers may cancel by managing the app subscription in Atlassian billing or uninstalling the app from the Confluence site, depending on the available Atlassian flow for the customer&#39;s billing experience.</p>
+<p>Cancellation stops future use according to Atlassian Marketplace licensing behavior. Access may continue until the end of the paid billing period if Atlassian&#39;s billing flow provides continued entitlement.</p>
+<hr />
+<h3>5. Data After Cancellation or Uninstall</h3>
+<p>App data is stored in Atlassian Forge Storage. SteikTech does not maintain a separate customer database for Readiness Assistant app data.</p>
+<p>Current deletion options:</p>
+<ul>
+<li><strong>Clear scan findings:</strong> removes findings, scores, scan history, AI governance data, and anonymized AI review output.</li>
+<li><strong>Clear workflow records:</strong> removes workflow records.</li>
+<li><strong>Clear all app data:</strong> clears app data and restores settings defaults.</li>
+<li><strong>Uninstall:</strong> starts Atlassian Forge&#39;s hosted app-data lifecycle for the installation.</li>
+</ul>
+<p>Customers should export any CSV or Audit Pack reports they need before clearing data or uninstalling the app.</p>
+<hr />
+<h3>6. No Separate Direct Refund Channel</h3>
+<p>Because the app is Paid via Atlassian, SteikTech does not issue direct card refunds or bank refunds to customers. Refunds, credits, invoices, tax treatment, and payment reversals are handled through Atlassian unless a separate written agreement says otherwise.</p>
+<hr />
+<h3>References Checked</h3>
+<ul>
+<li>Atlassian Marketplace Terms of Use: <a href="https://www.atlassian.com/licensing/marketplace/termsofuse">https://www.atlassian.com/licensing/marketplace/termsofuse</a></li>
+<li>Atlassian Support - Request a refund: <a href="https://support.atlassian.com/subscriptions-and-billing/docs/request-a-refund/">https://support.atlassian.com/subscriptions-and-billing/docs/request-a-refund/</a></li>
+<li>Atlassian Marketplace pricing, payment, and billing developer documentation: <a href="https://developer.atlassian.com/platform/marketplace/pricing-payment-and-billing/">https://developer.atlassian.com/platform/marketplace/pricing-payment-and-billing/</a></li>
+</ul>
+    </article>
+  </main>
+  <footer>
+    SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland · support@steiktech.de
+  </footer>
+</body>
+</html>
