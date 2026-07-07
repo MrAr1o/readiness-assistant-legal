@@ -173,14 +173,13 @@
 <p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik</p>
 <p><strong>Address:</strong> Severinstraße 61, 45127 Essen, Deutschland</p>
 <p><strong>Effective date:</strong> June 18, 2026</p>
-<p><strong>Last updated:</strong> June 2026</p>
-<p><strong>Version:</strong> 1.0</p>
-<div class="notice"><strong>Legal notice:</strong> This document is a prepared draft. It must be reviewed by a qualified legal professional before publication and before charging customers. It does not constitute legal advice.</div>
+<p><strong>Last updated:</strong> July 7, 2026</p>
+<p><strong>Version:</strong> 1.3</p>
 <hr />
 <h3>1. Who We Are</h3>
 <p>Readiness Assistant is an Atlassian Marketplace application for Confluence Cloud, operated by <strong>SteikTech, Uilliam Leon Steik</strong>, Severinstraße 61, 45127 Essen, Deutschland (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;).</p>
 <p>If you have questions about this policy, contact us at: <strong>support@steiktech.de</strong></p>
-<p>For security or vulnerability concerns, use the same contact during the test phase: <strong>support@steiktech.de</strong></p>
+<p>For security or vulnerability concerns, contact: <strong>support@steiktech.de</strong></p>
 <hr />
 <h3>2. What This App Does</h3>
 <p>Readiness Assistant is a documentation readiness tool that scans Confluence Cloud spaces to help teams:</p>
@@ -188,6 +187,7 @@
 <li>identify evidence gaps against compliance frameworks (GDPR, ISO 27001, SOC 2, and others);</li>
 <li>detect stale, ownerless, or poorly structured documentation;</li>
 <li>assign ownership and track remediation workflows;</li>
+<li>optionally classify sensitive content and generate remediation guidance with Atlassian-hosted Forge LLMs;</li>
 <li>generate internal Readiness Audit Packs.</li>
 </ul>
 <p><strong>This app does not certify compliance, provide legal advice, issue audit opinions, or guarantee regulatory approval.</strong></p>
@@ -202,7 +202,7 @@
 <hr />
 <h3>4. Data We Access from Confluence</h3>
 <p>When installed, the app requests the following Confluence Cloud API scopes. These are the minimum required for the app to function.</p>
-<div class="table-wrap"><table><thead><tr><th>Scope</th><th>Data accessed</th><th>Purpose</th></tr></thead><tbody><tr><td><code>read:page:confluence</code></td><td>Page titles, page body text, last-modified dates, space key</td><td>Scan for evidence keywords; detect stale/orphan/ownerless pages</td></tr><tr><td><code>read:space:confluence</code></td><td>Space names and keys</td><td>List available spaces; apply space inclusion/exclusion filters</td></tr><tr><td><code>read:confluence-user</code></td><td>Author account IDs and display names linked to pages</td><td>Identify page ownership; surface ownerless pages</td></tr><tr><td><code>storage:app</code></td><td>App&#39;s own isolated Forge Storage</td><td>Store scan findings, settings, and workflow records</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Scope</th><th>Data accessed</th><th>Purpose</th></tr></thead><tbody><tr><td><code>read:page:confluence</code></td><td>Page titles, page body text, last-modified dates, space key</td><td>Scan for evidence keywords; detect stale/orphan/ownerless pages</td></tr><tr><td><code>read:confluence-content.summary</code></td><td>Page event metadata</td><td>Receive page-created and page-updated Forge events for the optional automatic page scan</td></tr><tr><td><code>read:space:confluence</code></td><td>Space names and keys</td><td>List available spaces; apply space inclusion/exclusion filters</td></tr><tr><td><code>read:confluence-user</code></td><td>Current user identity and Confluence operations</td><td>Verify that the person opening installation-wide findings and settings is a Confluence administrator</td></tr><tr><td><code>storage:app</code></td><td>App&#39;s own isolated Forge Storage</td><td>Store scan findings, settings, and workflow records</td></tr></tbody></table></div>
 <p>The app does <strong>not</strong> request write permissions. It cannot create, edit, or delete Confluence pages, spaces, or user accounts.</p>
 <hr />
 <h3>5. How We Process Page Content</h3>
@@ -214,21 +214,59 @@
 <li>If the optional Sensitive Data Check feature is enabled, page text is additionally scanned for common credential patterns.</li>
 <li>After analysis, <strong>the raw page body text is discarded</strong>. It is not stored in Forge Storage.</li>
 </ol>
+<p>Admins may separately enable <strong>Automatic page scan</strong>. When enabled, a created</p>
+<p>or updated page is scanned after Forge delivers the corresponding Confluence</p>
+<p>event. Forge event delivery may be delayed. The same space/page exclusions,</p>
+<p>redaction rules, and Forge-only processing apply. This option is disabled by</p>
+<p>default and requires Sensitive Data Check.</p>
+<p>Admins may also enable <strong>AI privacy and remediation</strong>. This feature is disabled</p>
+<p>by default and is invoked manually for an existing Data Safety finding:</p>
+<ol>
+<li>The app re-reads the current page and locally locates the already-detected</li>
+</ol>
+<p>value.</p>
+<ol>
+<li>A bounded excerpt (up to 1,200 characters) is sent through Atlassian&#39;s Forge</li>
+</ol>
+<p>LLM API to classify sensitive entities.</p>
+<ol>
+<li>App code replaces exact classified values with typed placeholders such as</li>
+</ol>
+<p><code>[PERSON_1]</code> or <code>[REMOVED_SECRET_1]</code>.</p>
+<ol>
+<li>A second Forge LLM request receives only the anonymized excerpt and generates</li>
+</ol>
+<p>structured remediation guidance.</p>
+<ol>
+<li>The raw excerpt, prompts and original entity values are held only for the</li>
+</ol>
+<p>active invocation and are not written to app storage.</p>
+<ol>
+<li>The latest anonymized preview and structured remediation output are retained</li>
+</ol>
+<p>in Forge Storage for up to 90 days, capped at 250 reviews per installation,</p>
+<p>so administrators can reopen a review without another model request.</p>
+<p>AI output is advisory and requires human review. The app does not use AI to</p>
+<p>write to or modify Confluence pages.</p>
 <hr />
 <h3>6. What We Store in Forge Storage</h3>
 <p>All persistent data is stored in <strong>Atlassian Forge Storage</strong> — a per-installation, isolated key-value store hosted within Atlassian&#39;s infrastructure. Each installation has its own isolated storage namespace. No data crosses tenant boundaries.</p>
 <h4>Data stored:</h4>
-<div class="table-wrap"><table><thead><tr><th>Data type</th><th>Contents</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Compliance findings</strong></td><td>Framework name, control ID, control name, status (PASS/FAIL/PARTIAL), gap descriptions, recommendation text, matched page references (title, URL, matched keywords)</td><td>No full page body stored</td></tr><tr><td><strong>Health findings</strong></td><td>Page title, page URL, space key, issue type (STALE/ORPHAN/NO_OWNER), days-since-modified, recommendation text</td><td>No page body stored</td></tr><tr><td><strong>Sensitive data findings</strong></td><td>Pattern name, severity, <strong>redacted</strong> match preview (e.g. <code>sk_live_51H...</code>), page title, page URL</td><td>Original credential/token is discarded immediately; only a redacted preview is stored</td></tr><tr><td><strong>Workflow records</strong></td><td>Control ID, framework, status, assigned owner display name (if provided), due date, notes, timestamps</td><td>PII note: owner display name is stored if manually entered by a user</td></tr><tr><td><strong>Scan summaries</strong></td><td>Scan timestamp, pages scanned, space keys scanned, finding counts by severity and type</td><td>Aggregate metadata only</td></tr><tr><td><strong>Risk/readiness scores</strong></td><td>Numeric scores (0–100) per dimension, trend direction</td><td>Derived from findings; no raw content</td></tr><tr><td><strong>App settings</strong></td><td>Selected frameworks, scan schedule, excluded spaces, threshold settings, feature toggles</td><td>No personal data</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Data type</th><th>Contents</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Compliance findings</strong></td><td>Framework name, control ID, control name, status (PASS/FAIL/PARTIAL), gap descriptions, recommendation text, matched page references (title, URL, matched keywords)</td><td>No full page body stored</td></tr><tr><td><strong>Health findings</strong></td><td>Page title, page URL, space key, issue type (STALE/ORPHAN/NO_OWNER), days-since-modified, recommendation text</td><td>No page body stored</td></tr><tr><td><strong>Sensitive data findings</strong></td><td>Pattern name, severity, <strong>redacted</strong> match preview (e.g. <code>sk_live_51H...</code>), page title, page URL</td><td>Original credential/token is discarded immediately; only a redacted preview is stored</td></tr><tr><td><strong>AI inventory metadata</strong></td><td>Detected tool/category, risk classification, page reference and documentation gaps</td><td>Surrounding page-text snippets are removed before storage</td></tr><tr><td><strong>Workflow records</strong></td><td>Control ID, framework, status, assigned owner display name (if provided), due date, notes, timestamps</td><td>PII note: owner display name is stored if manually entered by a user</td></tr><tr><td><strong>Scan summaries</strong></td><td>Scan timestamp, pages scanned, space keys scanned, finding counts by severity and type</td><td>Aggregate metadata only</td></tr><tr><td><strong>Risk/readiness scores</strong></td><td>Numeric scores (0–100) per dimension, trend direction</td><td>Derived from findings; no raw content</td></tr><tr><td><strong>App settings</strong></td><td>Selected frameworks, scan schedule, excluded spaces, threshold settings, feature toggles</td><td>No personal data</td></tr><tr><td><strong>Automatic page scan metadata</strong></td><td>Page ID, event type, page version, timestamps, aggregate finding count</td><td>Capped deduplication metadata; no page body or detected value</td></tr><tr><td><strong>AI usage aggregate</strong></td><td>Current month, number of completed AI requests, input/output token counts, last-used timestamp</td><td>No prompt, page, user, finding content, or model output</td></tr><tr><td><strong>AI review output</strong></td><td>Anonymized preview, typed placeholders, structured remediation, model metadata and token usage</td><td>No raw prompt, raw excerpt or original detected value; maximum 250 records</td></tr></tbody></table></div>
 <h4>Data NOT stored:</h4>
 <ul>
 <li>Raw Confluence page body text or HTML</li>
+<li>Surrounding page-text snippets from AI inventory detection</li>
 <li>Passwords, tokens, API keys, or credentials in their original unredacted form</li>
-<li>Personal data beyond what Confluence exposes as page metadata (author display names associated with pages)</li>
-<li>Data in external databases, our own servers, or any third-party service</li>
+<li>Forge LLM prompts, bounded raw excerpts, or original entity values</li>
+<li>User email addresses, payment information, or customer billing records</li>
+<li>Persistent customer data in external databases, our own servers, or third-party services</li>
 </ul>
 <hr />
 <h3>7. Sensitive Data Handling</h3>
-<p>The Sensitive Data Check feature is <strong>optional and disabled by default</strong>. When enabled by an admin:</p>
+<p>The Sensitive Data Check and Automatic page scan features are **optional and</p>
+<p>disabled by default**. Automatic page scan can only be enabled when Sensitive</p>
+<p>Data Check is active. When scanning is enabled by an admin:</p>
 <ol>
 <li>Page content is scanned for credential patterns (API keys, tokens, connection strings, PII) within the Forge runtime.</li>
 <li>When a pattern match is detected, only a redacted preview is created (first and last few characters visible).</li>
@@ -236,21 +274,30 @@
 <li>The original credential or sensitive value is discarded immediately after detection.</li>
 </ol>
 <p>No credential is ever stored in plain text.</p>
+<p>When AI assistance is enabled, an original detected value may be processed</p>
+<p>transiently inside the bounded excerpt sent to Atlassian&#39;s Forge LLM API. The</p>
+<p>value is replaced by deterministic app code before the remediation-advisor</p>
+<p>request and before any result is returned to the browser. AI assistance does</p>
+<p>not run automatically during workspace scans.</p>
 <hr />
 <h3>8. Personal Data We Process</h3>
 <p>The app may incidentally process the following personal data:</p>
-<div class="table-wrap"><table><thead><tr><th>Personal data</th><th>Source</th><th>Purpose</th><th>Storage</th></tr></thead><tbody><tr><td>Confluence user display names (page authors)</td><td>Confluence API (<code>read:confluence-user</code>)</td><td>Show page ownership in the Doc Review panel</td><td>Not stored unless associated with a workflow record</td></tr><tr><td>Owner display names</td><td>Manually entered by Confluence admin</td><td>Assign ownership in remediation workflow</td><td>Stored in workflow records in Forge Storage</td></tr><tr><td>Notes text</td><td>Manually entered by admin/user</td><td>Workflow tracking</td><td>Stored in workflow records</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Personal data</th><th>Source</th><th>Purpose</th><th>Storage</th></tr></thead><tbody><tr><td>Atlassian account ID and current-user display name</td><td>Confluence API (<code>read:confluence-user</code>)</td><td>Verify Confluence administrator access and display the current administrator</td><td>Used during the session; not written to app storage by the access check</td></tr><tr><td>Owner display names</td><td>Manually entered by Confluence admin</td><td>Assign ownership in remediation workflow</td><td>Stored in workflow records in Forge Storage</td></tr><tr><td>Notes text</td><td>Manually entered by admin/user</td><td>Workflow tracking</td><td>Stored in workflow records</td></tr></tbody></table></div>
 <p>We do not collect names, email addresses, or account details of users for marketing or analytics purposes.</p>
+<p>The Forge invocation context also supplies app-license metadata such as active status, Marketplace edition and evaluation status. The app uses this data to enforce feature access. It does not store billing details, prices, payment instruments, or license metadata in app storage.</p>
 <hr />
-<h3>9. External Data Processing</h3>
-<p><strong>Version 1 of this app makes no calls to external AI providers, third-party analytics services, external databases, or third-party APIs.</strong></p>
-<p>All computation occurs within the Atlassian Forge runtime environment. There is no telemetry, crash reporting, or analytics service enabled in v1.</p>
-<p>If future versions introduce optional external features (such as AI-assisted analysis), we will:</p>
-<ul>
-<li>document these changes in advance;</li>
-<li>update this privacy policy;</li>
-<li>where required by law, seek explicit customer consent.</li>
-</ul>
+<h3>9. AI and External Data Processing</h3>
+<p>The app does not send Confluence content to SteikTech-operated infrastructure,</p>
+<p>directly call vendor AI APIs, or require customer-supplied AI credentials.</p>
+<p>Optional AI assistance uses the <code>@forge/llm</code> SDK and Atlassian-hosted Forge LLM</p>
+<p>gateway. Atlassian documents Forge LLM applications as remaining eligible for</p>
+<p>Runs on Atlassian.</p>
+<p>The current implementation uses Claude-family models made available through</p>
+<p>Forge. Atlassian controls the model integration, moderation and underlying</p>
+<p>provider arrangements. Customers should review Atlassian&#39;s current AI terms,</p>
+<p>privacy documentation and subprocessor disclosures for their organisation.</p>
+<p>There is no third-party analytics, advertising, telemetry, external database,</p>
+<p>or SteikTech-operated inference service in the app.</p>
 <hr />
 <h3>10. Data Subprocessors and Infrastructure</h3>
 <p>The app is built on <strong>Atlassian Forge</strong>, Atlassian&#39;s serverless platform for Confluence Cloud. By using this app, your data is processed within Atlassian&#39;s infrastructure subject to Atlassian&#39;s own data handling practices.</p>
@@ -258,21 +305,33 @@
 <ul>
 <li>Runtime execution of the app&#39;s functions;</li>
 <li>Storage of app data in Forge Storage.</li>
+<li>Routing optional AI requests through Forge LLMs.</li>
 </ul>
 <p><strong>Atlassian&#39;s Privacy Policy:</strong> <a href="https://www.atlassian.com/legal/privacy-policy">https://www.atlassian.com/legal/privacy-policy</a></p>
-<p>We do not use additional subprocessors in v1.</p>
+<p>SteikTech does not directly appoint a separate AI subprocessor or operate an AI</p>
+<p>backend for this feature. Model-provider processing made available through</p>
+<p>Forge is governed by Atlassian&#39;s applicable terms and disclosures. If a</p>
+<p>customer voluntarily emails support, that communication occurs outside the app</p>
+<p>and is processed by the email services used by the sender and SteikTech.</p>
+<p>Customers should not include credentials, secrets, or unnecessary Confluence</p>
+<p>page content in support messages.</p>
 <hr />
 <h3>11. Data Retention</h3>
-<div class="table-wrap"><table><thead><tr><th>Data type</th><th>Retention</th><th>Notes</th></tr></thead><tbody><tr><td>Compliance findings</td><td>Latest scan retained; replaced by subsequent scans</td><td>No raw page body stored</td></tr><tr><td>Health findings</td><td>Latest scan retained; replaced by subsequent scans</td><td>No raw page body stored</td></tr><tr><td>Sensitive data findings</td><td>Latest scan retained until next scan or manual clear</td><td>Optional feature only; redacted previews only</td></tr><tr><td>Scan summaries</td><td>Last 30 scans retained (ring buffer)</td><td>Older summaries overwritten</td></tr><tr><td>Risk/readiness scores</td><td>Last 30 scan records</td><td></td></tr><tr><td>Gap workflow records</td><td>Until manually deleted or app uninstalled</td><td>Persist as long as app is installed</td></tr><tr><td>App settings</td><td>Until manually reset or app uninstalled</td><td></td></tr></tbody></table></div>
-<p><strong>On uninstall:</strong> App data stored in Atlassian Forge Storage is managed by the Atlassian Forge platform for that app installation. We do not retain any separate copy of customer data outside Forge Storage.</p>
+<div class="table-wrap"><table><thead><tr><th>Data type</th><th>Retention</th><th>Notes</th></tr></thead><tbody><tr><td>Compliance findings</td><td>Latest scan retained; replaced by subsequent scans</td><td>No raw page body stored</td></tr><tr><td>Health findings</td><td>Latest scan retained; replaced by subsequent scans</td><td>No raw page body stored</td></tr><tr><td>Sensitive data findings</td><td>Latest enabled Data Safety scan, until replaced or manually cleared</td><td>Optional feature only; redacted previews only</td></tr><tr><td>AI inventory metadata</td><td>Latest AI governance scan, until replaced or manually cleared</td><td>No surrounding page-text snippets stored</td></tr><tr><td>AI finding analysis</td><td>Up to 90 days; latest 250 reviews</td><td>Only anonymized output and structured remediation; removed by Clear scan findings / Clear all</td></tr><tr><td>AI usage aggregate</td><td>Current calendar month</td><td>Replaced when the month changes; aggregate counts only</td></tr><tr><td>Scan summaries</td><td>Last 30 scans retained (ring buffer)</td><td>Older summaries overwritten</td></tr><tr><td>Risk/readiness score</td><td>Current score, replaced when recalculated</td><td>Scan summaries retain counts, not historical score objects</td></tr><tr><td>Gap workflow records</td><td>Until manually deleted or app uninstalled</td><td>Persist as long as app is installed</td></tr><tr><td>App settings</td><td>Until manually reset, clear-all is used, or app uninstalled</td><td></td></tr></tbody></table></div>
+<p>Retained AI finding analyses use a 90-day Forge KVS TTL. The app rejects an</p>
+<p>expired analysis immediately using its stored expiry timestamp; Atlassian may</p>
+<p>complete physical deletion asynchronously after expiry.</p>
+<p><strong>On uninstall:</strong> Forge-hosted storage is soft-deleted and currently retained by Atlassian for 28 days. Reinstallation does not automatically restore prior data. With customer consent, a recovery request may be submitted to Atlassian within 21 days. We do not retain a separate app-data copy outside Forge Storage.</p>
 <hr />
 <h3>12. Customer Admin Controls</h3>
 <p>Confluence admins who have installed the app can:</p>
 <ul>
-<li><strong>Clear all findings:</strong> Use the &quot;Reset Data&quot; function in the app Settings panel to delete all stored scan findings and scores.</li>
+<li><strong>Clear scan findings:</strong> Use the app Settings panel to delete stored findings, scan history, scores, async scan state, and AI scan output.</li>
+<li><strong>Clear workflow records:</strong> Use the app Settings panel to delete gap workflow and page-review records.</li>
+<li><strong>Clear all app data:</strong> Use the app Settings panel to delete scan data and workflow records, and restore settings to defaults.</li>
 <li><strong>Exclude spaces:</strong> Configure space exclusion rules to prevent specific spaces from being scanned.</li>
-<li><strong>Disable optional features:</strong> Turn off the Sensitive Data Check feature if not needed.</li>
-<li><strong>Uninstall the app:</strong> Removes all Forge Storage data for that installation.</li>
+<li><strong>Disable optional features:</strong> Turn off Sensitive Data Check, Automatic page scan, or AI assistance if not needed.</li>
+<li><strong>Uninstall the app:</strong> Starts Atlassian&#39;s Forge-hosted storage soft-deletion lifecycle described above.</li>
 </ul>
 <p>We do not currently provide a self-service export of all stored data. Admins who need a full data export for compliance purposes may contact support@steiktech.de.</p>
 <hr />
@@ -283,8 +342,9 @@
 <h3>14. Security</h3>
 <ul>
 <li>The app runs exclusively within the Atlassian Forge sandboxed runtime. It does not run on external servers.</li>
-<li>Network calls from the app are limited to Atlassian APIs (Confluence API, Forge Storage API). No other outbound connections are made in v1.</li>
+<li>Network calls are limited to Atlassian APIs, including Confluence, Forge Storage, licensing context, and the optional Forge LLM gateway. No external analytics, fonts, direct vendor AI APIs, or operator servers are contacted.</li>
 <li>Sensitive pattern matches are redacted before storage.</li>
+<li>AI output cannot edit Confluence content. Only anonymized review output is retained, subject to the 90-day and 250-record limits described above.</li>
 <li>Forge Storage is isolated per app installation — no other Marketplace app can access your installation&#39;s data.</li>
 </ul>
 <p>We maintain a responsible disclosure process. To report a security concern, contact: <strong>support@steiktech.de</strong></p>
@@ -321,7 +381,7 @@
 <p><strong>Phone:</strong> +49 15567 271427</p>
 <p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik, Severinstraße 61, 45127 Essen, Deutschland</p>
 <hr />
-<p>*This policy applies to version 1.x of Readiness Assistant. It was prepared as a draft and requires review by a qualified legal professional before publication.*</p>
+<p>*This policy applies to version 1.x of Readiness Assistant.*</p>
     </article>
   </main>
   <footer>

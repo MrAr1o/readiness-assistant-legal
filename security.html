@@ -173,8 +173,8 @@
 <p><strong>Operator:</strong> SteikTech, Uilliam Leon Steik</p>
 <p><strong>Address:</strong> Severinstraße 61, 45127 Essen, Deutschland</p>
 <p><strong>Security contact:</strong> support@steiktech.de</p>
-<p><strong>Last updated:</strong> June 2026</p>
-<p><strong>Version:</strong> 1.0</p>
+<p><strong>Last updated:</strong> July 7, 2026</p>
+<p><strong>Version:</strong> 1.2</p>
 <hr />
 <h3>1. Overview</h3>
 <p>SteikTech takes security seriously. This policy describes how we handle security vulnerability reports for the Readiness Assistant app and what researchers and customers can expect from us.</p>
@@ -182,7 +182,7 @@
 <hr />
 <h3>2. How to Report a Vulnerability</h3>
 <p><strong>Email:</strong> support@steiktech.de</p>
-<div class="notice">During the initial test and beta phase, security reports are handled through the shared SteikTech support inbox. Before public Marketplace launch, consider creating a dedicated monitored security inbox such as <code>security@steiktech.de</code>.</div>
+<p>Security reports are currently handled through the monitored SteikTech support inbox. SteikTech may add a dedicated security inbox such as <code>security@steiktech.de</code>.</p>
 <p><strong>Subject line format:</strong> <code>[SECURITY] Brief description — App: Readiness Assistant</code></p>
 <p><strong>Please include:</strong></p>
 <ul>
@@ -201,7 +201,7 @@
 </ul>
 <hr />
 <h3>3. Response Commitments</h3>
-<div class="table-wrap"><table><thead><tr><th>Milestone</th><th>Target timeframe</th></tr></thead><tbody><tr><td>Acknowledgement of receipt</td><td>Within 48 hours of report</td></tr><tr><td>Initial triage and severity assessment</td><td>Within 7 business days</td></tr><tr><td>Remediation timeline provided (for confirmed issues)</td><td>Within 14 business days</td></tr><tr><td>Resolution — Critical (CVSS ≥ 9.0)</td><td>Target: 14 days from confirmation</td></tr><tr><td>Resolution — High (CVSS 7.0–8.9)</td><td>Target: 30 days from confirmation</td></tr><tr><td>Resolution — Medium (CVSS 4.0–6.9)</td><td>Target: 60 days from confirmation</td></tr><tr><td>Resolution — Low/Informational (CVSS &lt; 4.0)</td><td>Addressed in next planned release</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Milestone</th><th>Target timeframe</th></tr></thead><tbody><tr><td>Acknowledgement of receipt</td><td>Target: within 2 business days</td></tr><tr><td>Initial triage and severity assessment</td><td>Within 7 business days</td></tr><tr><td>Remediation timeline provided (for confirmed issues)</td><td>Within 14 business days</td></tr><tr><td>Resolution — Critical (CVSS ≥ 9.0)</td><td>Target: 14 days from confirmation</td></tr><tr><td>Resolution — High (CVSS 7.0–8.9)</td><td>Target: 30 days from confirmation</td></tr><tr><td>Resolution — Medium (CVSS 4.0–6.9)</td><td>Target: 60 days from confirmation</td></tr><tr><td>Resolution — Low/Informational (CVSS &lt; 4.0)</td><td>Addressed in next planned release</td></tr></tbody></table></div>
 <p>These are targets, not contractual SLAs. For a 2-person team, timelines may slip for complex issues. We will communicate proactively if a committed timeline cannot be met.</p>
 <hr />
 <h3>4. Severity Levels</h3>
@@ -229,7 +229,7 @@
 <h3>6. Triage Process</h3>
 <p>When a report is received:</p>
 <ol>
-<li><strong>Receipt confirmation (48h):</strong> Automated or manual acknowledgement sent to reporter.</li>
+<li><strong>Receipt confirmation:</strong> Target acknowledgement within 2 business days.</li>
 <li><strong>Initial review (7 days):</strong> One of the two founders reviews the report, reproduces if possible, and assigns a severity level.</li>
 <li><strong>Response to reporter:</strong> We inform the reporter of our assessment and planned timeline.</li>
 <li><strong>Remediation:</strong> Depending on severity, we patch the app code and deploy an update via <code>forge deploy</code>.</li>
@@ -271,35 +271,6 @@
 <li><strong>General security questions:</strong> support@steiktech.de (for non-vulnerability security questions)</li>
 <li><strong>Atlassian Marketplace security review enquiries:</strong> support@steiktech.de</li>
 </ul>
-<hr />
-<h3>11. Internal Process Notes (for SteikTech team)</h3>
-<div class="notice">This section is internal guidance and should be removed before publishing externally.</div>
-<p><strong>Responsibilities:</strong></p>
-<ul>
-<li>Primary security contact: [ASSIGN FOUNDER NAME]</li>
-<li>Backup: [ASSIGN SECOND FOUNDER NAME]</li>
-</ul>
-<p><strong>When a report arrives at support@steiktech.de:</strong></p>
-<ol>
-<li>Forward to the assigned security contact immediately.</li>
-<li>Log the report in a private tracking document (not a public Jira/GitHub issue).</li>
-<li>Send acknowledgement email to reporter within 48 hours.</li>
-<li>Reproduce the issue in a development environment, not production.</li>
-<li>If confirmed critical: patch immediately, deploy to production, notify reporter.</li>
-<li>If confirmed high: schedule fix in next sprint, keep reporter informed.</li>
-<li>Document the issue and resolution in a private security log.</li>
-</ol>
-<p><strong>Forge deployment of a security fix:</strong></p>
-<p>```bash</p>
-<h2>Build frontend</h2>
-<p>cd static/hello-world &amp;&amp; npm run build &amp;&amp; cd ../..</p>
-<h2>Run all tests</h2>
-<p>npm test -- --runInBand</p>
-<h2>Deploy fix</h2>
-<p>npx -y @forge/cli@latest deploy --environment production</p>
-<h2>Monitor logs</h2>
-<p>npx -y @forge/cli@latest logs --tail</p>
-<p>```</p>
     </article>
   </main>
   <footer>
