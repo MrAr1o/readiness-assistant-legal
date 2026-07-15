@@ -170,7 +170,7 @@
     </section>
     <article class="content">
       <h2>Security &amp; Privacy FAQ — Readiness Assistant</h2>
-<p>*Public-facing. Last updated: July 7, 2026.*</p>
+<p>*Public-facing. Last updated: July 15, 2026.*</p>
 <p>This page answers the most common security and privacy questions about how Readiness Assistant works, what data it accesses, and how that data is handled.</p>
 <p>For vulnerability reports, contact: <strong>support@steiktech.de</strong></p>
 <p>For privacy questions, contact: <strong>support@steiktech.de</strong></p>
@@ -203,7 +203,7 @@
 <p><strong>No.</strong> The app requests <strong>read-only</strong> access to Confluence content. It cannot create, edit, move, or delete any Confluence pages, spaces, or user accounts.</p>
 <hr />
 <h4>Does the app access all spaces automatically?</h4>
-<p>The app scans the Confluence spaces accessible to the installing user&#39;s permissions. Admins can configure <strong>space exclusions</strong> in Settings to prevent specific spaces from being scanned. Individual page exclusions are also supported.</p>
+<p>Interactive scans run in the authenticated Confluence administrator&#39;s context. Scheduled scans and page-event processing run as the Forge app system identity because no interactive user is present. In both cases, access remains limited by the app&#39;s read-only scopes, Atlassian app-access rules, Confluence permissions, and the configured space and page exclusions.</p>
 <hr />
 <h3>Data Storage</h3>
 <h4>Does the app store raw Confluence page content?</h4>
