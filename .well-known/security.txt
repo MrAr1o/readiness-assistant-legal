@@ -1,0 +1,5 @@
+Contact: mailto:support@steiktech.de
+Expires: 2027-07-21T00:00:00.000Z
+Preferred-Languages: en, de
+Canonical: https://mrar1o.github.io/readiness-assistant-legal/.well-known/security.txt
+Policy: https://mrar1o.github.io/readiness-assistant-legal/security.html
